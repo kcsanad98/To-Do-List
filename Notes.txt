@@ -1,0 +1,4 @@
+- Felhasználó elől rejtsük el a mentési lehetőséget: a program bezáráskor leállás előtt automatikus mentsen, induláskor automatikus töltse be a fájlt (El tudjuk-e távolítani a felső sávot és létrehozni külön gombot a bezárásra?)
+
+- Jegyzeteket tartalmazó tömb automatikus rendezése időpont/szín(fontosság?) szerint
+- Utánanézni: színválasztó rendszer
