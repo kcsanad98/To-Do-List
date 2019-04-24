@@ -65,6 +65,7 @@ public class Note {
 
     private void setDate(LocalDate value) {
         date.set(value);
+        
     }
 
     private ObjectProperty dateProperty() {
