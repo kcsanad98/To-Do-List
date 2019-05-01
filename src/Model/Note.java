@@ -35,52 +35,52 @@ public class Note {
         this.color = new SimpleIntegerProperty();
     }
     
-    private String getTitle() {
+    public String getTitle() {
         return title.get();
     }
 
-    private void setTitle(String value) {
+    public void setTitle(String value) {
         title.set(value);
     }
 
-    private StringProperty titleProperty() {
+    public StringProperty titleProperty() {
         return title;
     }
 
-    private String getContant() {
+    public String getContent() {
         return content.get();
     }
 
-    private void setContant(String value) {
+    public void setContent(String value) {
         content.set(value);
     }
 
-    private StringProperty contantProperty() {
+    public StringProperty contentProperty() {
         return content;
     }
 
-    private LocalDate getDate() {
+    public LocalDate getDate() {
         return date.get();
     }
 
-    private void setDate(LocalDate value) {
+    public void setDate(LocalDate value) {
         date.set(value);
         
     }
 
-    private ObjectProperty dateProperty() {
+    public ObjectProperty<LocalDate> dateProperty() {
         return date;
     }
 
-    private int getColor() {
+    public int getColor() {
         return color.get();
     }
 
-    private void setColor(int value) {
+    public void setColor(int value) {
         color.set(value);
     }
 
-    private IntegerProperty colorProperty() {
+    public IntegerProperty colorProperty() {
         return color;
     }
 

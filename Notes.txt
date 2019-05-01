@@ -2,3 +2,12 @@
 
 - Jegyzeteket tartalmazó tömb automatikus rendezése időpont/szín(fontosság?) szerint
 - Utánanézni: színválasztó rendszer
+
+-Szerepkorok:
+	Badics Bence: Tesztelo, 
+
+	Turcsan Gyula: Design, 
+
+	Fejervari Virag: Design, 
+
+	Kolcsei Csanad: Perzisztencia, 
