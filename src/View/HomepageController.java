@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,6 +23,9 @@ public class HomepageController implements Initializable {
 
     @FXML
     private Label contentLabel;
+    
+    @FXML
+    private Label detailsLabel;
 
     @FXML
     private TableView<Note> noteTable;
@@ -58,10 +62,12 @@ public class HomepageController implements Initializable {
             titleLabel.setText("");
             dateLabel.setText("");
             contentLabel.setText("");
+            detailsLabel.setText("");
         } else {
             titleLabel.setText(note.getTitle());
             dateLabel.setText("Until: " + DateUtil.format(note.getDate()));
             contentLabel.setText(note.getContent());
+            detailsLabel.setText("Details");
         }
     }
 
@@ -88,7 +94,31 @@ public class HomepageController implements Initializable {
 
     @FXML
     private void handleNewNote() {
-        //To be completed
+        Note tempNote = new Note();
+        boolean okClicked = mainApp.showaddNewLayout(tempNote);
+        if(okClicked){
+            mainApp.getToDoNotes().add(tempNote);
+        }
+    }
+    
+    @FXML
+    private void handleEditNote(){
+        Note selectedNote = noteTable.getSelectionModel().getSelectedItem();
+        if(selectedNote != null){
+            boolean okClicked = mainApp.showaddNewLayout(selectedNote);
+            if(okClicked){
+                showNoteDetails(selectedNote);
+            }
+        }else{
+            //Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Note Selected");
+            alert.setContentText("Please select a note in the table.");
+
+        alert.showAndWait();
+        }
     }
 
     @FXML

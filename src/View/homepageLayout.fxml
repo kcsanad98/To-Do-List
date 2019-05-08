@@ -39,13 +39,13 @@
               </rowConstraints>
                <children>
                   <Label fx:id="titleLabel" text="Label" />
-                  <Label text="Details" GridPane.rowIndex="2" />
+                  <Label fx:id="detailsLabel" text="Details" GridPane.rowIndex="2" />
                   <Label fx:id="dateLabel" text="Label" GridPane.rowIndex="1" />
                   <Label fx:id="contentLabel" text="Label" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <Button fx:id="deleteButton" layoutX="29.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleDeleteNote" prefWidth="120.0" text="Delete" />
-            <Button fx:id="editButton" layoutX="160.0" layoutY="498.0" mnemonicParsing="false" prefWidth="120.0" text="Edit" />
+            <Button fx:id="editButton" layoutX="160.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleEditNote" prefWidth="120.0" text="Edit" />
          </children>
       </Pane>
       <Label layoutX="12.0" layoutY="31.0" prefHeight="26.0" prefWidth="145.0" text="STICKY NOTES" textFill="WHITE">

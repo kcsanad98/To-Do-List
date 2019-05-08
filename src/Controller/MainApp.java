@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Note;
+import View.AddNewLayoutController;
 import View.HomepageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -60,6 +61,32 @@ public class MainApp extends Application {
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public boolean showaddNewLayout(Note note){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/View/addNewLayout.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Notes");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            
+            AddNewLayoutController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setNote(note);
+            
+            dialogStage.showAndWait();
+            
+            return controller.isokClicked();
+        }catch (IOException e){
+            e.printStackTrace();
+            return false;
         }
     }
 
