@@ -1,3 +1,122 @@
-.button{
+/*MENU BUTTONS - START*/
+
+#menuButtonAdd,
+#menuButtonNotes,
+#menuButtonDeleted,
+#menuButtonDone{
     -fx-background-color: transparent;
 }
+
+/*MENU BUTTONS - END*/
+/*TABLE - START*/
+
+.table-row-cell{
+    -fx-cell-size: 50;
+    -fx-background-color: #47535F;
+    -fx-border-width:0 0 2 0;
+    -fx-border-color: #566372;    
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-width:0;
+}
+
+.table-row-cell:selected{
+    -fx-background-color: red;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view .table-column {
+    -fx-alignment: CENTER-LEFT;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 0 15;
+    
+}
+
+/*TABLE - END*/
+/*TABLE - SCROLL BAR - START*/
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow,
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+.table-view .scroll-bar:vertical .track{
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color :derive(black,50.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+ .scroll-bar:vertical .increment-arrow,
+ .scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";    
+    -fx-padding :0.0 0.15em;
+}
+
+/*TABLE - SCROLL BAR - END*/
+/*CONTENT - START*/
+
+#titleLabel{
+    -fx-text-fill: white;
+    -fx-font-size: 25px; 
+}
+
+#dateLabel{
+    -fx-text-fill: white;
+}
+
+#contentLabel{
+    -fx-text-fill: white;
+}
+
+#deleteButton{
+    -fx-background-color: linear-gradient(#ff8787, #e22e0d);
+    -fx-background-radius: 2;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 30 10 30;
+}
+
+#editButton{
+    -fx-background-color: linear-gradient(#f4eb42, #edb131);
+    -fx-background-radius: 2;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 30 10 30;
+}
+
+#deleteButton .text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.3) , 0, 0.0 , 0 , 1);
+}
+
+#detailsLabel{
+    -fx-text-fill: white;
+}
+
+
+/*CONTENT - END*/

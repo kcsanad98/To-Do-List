@@ -32,6 +32,14 @@ public class MainApp extends Application {
 
     public MainApp() {
         toDoNotes.add(new Note("Note to do"));
+        toDoNotes.add(new Note("2nd to do node"));
+        toDoNotes.add(new Note("3rd to do node"));
+        toDoNotes.add(new Note("4th to do node"));
+        toDoNotes.add(new Note("5th to do node"));
+        toDoNotes.add(new Note("6th to do node"));
+        toDoNotes.add(new Note("7th to do node"));
+        toDoNotes.add(new Note("8th to do node"));
+        toDoNotes.add(new Note("9th to do node"));
         doneNotes.add(new Note("Done note"));
         deletedNotes.add(new Note("Deleted note"));
     }
