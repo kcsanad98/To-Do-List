@@ -6,7 +6,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #47535f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddNewLayoutController">
    <children>
       <GridPane layoutX="48.0" layoutY="21.0" prefHeight="303.0" prefWidth="504.0">
@@ -46,7 +45,7 @@
             </Label>
             <TextField fx:id="titleField" prefHeight="31.0" prefWidth="249.0" GridPane.columnIndex="1" />
             <TextField fx:id="dateField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextArea fx:id="contentField" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="352.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea fx:id="contentField" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="352.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ColorPicker fx:id="colorPicker" prefHeight="31.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>

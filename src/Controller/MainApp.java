@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
+import javafx.stage.StageStyle;
 
 public class MainApp extends Application {
 
@@ -55,6 +56,7 @@ public class MainApp extends Application {
             HomepageController controller = loader.getController();
             controller.setMainApp(this);
 
+            primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.show();
             
