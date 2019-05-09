@@ -17,7 +17,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 
 public class MainApp extends Application {
@@ -38,17 +41,6 @@ public class MainApp extends Application {
     }
 
     public MainApp() {
-        toDoNotes.add(new Note("Note to do"));
-        toDoNotes.add(new Note("2nd to do node"));
-        toDoNotes.add(new Note("3rd to do node"));
-        toDoNotes.add(new Note("4th to do node"));
-        toDoNotes.add(new Note("5th to do node"));
-        toDoNotes.add(new Note("6th to do node"));
-        toDoNotes.add(new Note("7th to do node"));
-        toDoNotes.add(new Note("8th to do node"));
-        toDoNotes.add(new Note("9th to do node"));
-        doneNotes.add(new Note("Done note"));
-        deletedNotes.add(new Note("Deleted note"));
     }
 
     public void initHomepageLayout() {
@@ -65,6 +57,15 @@ public class MainApp extends Application {
 
             primaryStage.setScene(scene);
             primaryStage.show();
+            
+            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if(event.isControlDown() && event.getCode() == KeyCode.S){
+                        saveNotesToFile();
+                    }         
+                }
+            });
             
             loadNotesFromFile();
         } catch (IOException e) {
