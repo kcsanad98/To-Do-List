@@ -23,9 +23,16 @@ public class Note {
     private  StringProperty content = new SimpleStringProperty();
     private  ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
     private  IntegerProperty color = new SimpleIntegerProperty();
+    
+    public Note(){
+        this("");
+    }
 
-    public Note() {
-        this(null);
+    public Note(TempNote tempNote) {
+        this.title = new SimpleStringProperty(tempNote.getTitle());
+        this.content = new SimpleStringProperty(tempNote.getContent());
+        this.date = new SimpleObjectProperty<>(tempNote.getDate());
+        this.color = new SimpleIntegerProperty(tempNote.getColor());
     }
    
     public Note(String title){

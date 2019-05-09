@@ -1,8 +1,11 @@
 package Controller;
 
 import Model.Note;
+import Model.TempNote;
 import View.AddNewLayoutController;
 import View.HomepageController;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,8 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 
 public class MainApp extends Application {
@@ -53,40 +59,143 @@ public class MainApp extends Application {
 
             Scene scene = new Scene(personOverview);
             scene.getStylesheets().add("/View/style.css");
-            
+
             HomepageController controller = loader.getController();
             controller.setMainApp(this);
-            
-            primaryStage.setScene(scene); 
+
+            primaryStage.setScene(scene);
             primaryStage.show();
+            
+            loadNotesFromFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public boolean showaddNewLayout(Note note){
-        try{
+
+    public boolean showaddNewLayout(Note note) {
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("/View/addNewLayout.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
-            
+
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Notes");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-            
+
             AddNewLayoutController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setNote(note);
-            
+
             dialogStage.showAndWait();
-            
+
             return controller.isokClicked();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public void loadNotesFromFile() {
+        toDoNotes.clear();
+        doneNotes.clear();
+        deletedNotes.clear();
+        
+        TempNote tmp;
+        
+        try {
+            /*Loading toDoNotes from Appdata/ToDoData.ser*/
+            FileInputStream fIn = new FileInputStream("AppData/ToDoData.ser");
+            ObjectInputStream in = new ObjectInputStream(fIn);
+            
+            while(fIn.available() > 0){
+                tmp = (TempNote)in.readObject();
+                if(tmp != null)
+                    toDoNotes.add(new Note(tmp));
+            }
+            
+            fIn.close();
+            in.close();
+            
+            /*Loading doneNotes from Appdata/DoneData.ser*/
+            fIn = new FileInputStream("AppData/DoneData.ser");
+            in = new ObjectInputStream(fIn);
+            
+            while(fIn.available() > 0){
+                tmp = (TempNote)in.readObject();
+                if(tmp != null)
+                    doneNotes.add(new Note(tmp));
+            }
+            
+            fIn.close();
+            in.close();
+            
+            /*Loading deletedNotes from Appdata/DeletedData.ser*/
+            fIn = new FileInputStream("AppData/DeletedData.ser");
+            in = new ObjectInputStream(fIn);
+            
+            while(fIn.available() > 0){
+                tmp = (TempNote)in.readObject();
+                if(tmp != null)
+                    deletedNotes.add(new Note(tmp));
+            }
+            
+            fIn.close();
+            in.close();
+
+        } catch (IOException|ClassNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not load data");
+            alert.setContentText("Could not load data from file. No data is loaded.");
+
+            alert.showAndWait();
+        }
+    }
+
+    public void saveNotesToFile() {
+        try {
+            /*Saving toDoNotes to Appdata/ToDoData.ser*/
+            FileOutputStream fOut = new FileOutputStream("AppData/ToDoData.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fOut);
+
+            for (Note note : toDoNotes) {
+                out.writeObject(new TempNote(note));
+            }
+
+            out.close();
+            fOut.close();
+
+            /*Saving doneNotes to Appdata/DoneData.ser*/
+            fOut = new FileOutputStream("AppData/DoneData.ser");
+            out = new ObjectOutputStream(fOut);
+
+            for (Note note : doneNotes) {
+                out.writeObject(new TempNote(note));
+            }
+
+            out.close();
+            fOut.close();
+
+            /*Saving deletedNotes to Appdata/DeletedData.ser*/
+            fOut = new FileOutputStream("AppData/DeletedData.ser");
+            out = new ObjectOutputStream(fOut);
+
+            for (Note note : deletedNotes) {
+                out.writeObject(new TempNote(note));
+            }
+
+            out.close();
+            fOut.close();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not save data");
+            alert.setContentText("Could not save data to file");
+
+            alert.showAndWait();
         }
     }
 
