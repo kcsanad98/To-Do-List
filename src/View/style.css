@@ -3,7 +3,8 @@
 #menuButtonAdd,
 #menuButtonNotes,
 #menuButtonDeleted,
-#menuButtonDone{
+#menuButtonDone,
+#menuButtonStatistics{
     -fx-background-color: transparent;
 }
 
@@ -129,3 +130,8 @@
 
 
 /*CONTENT - END*/
+/*PIE CHART - START*/
+.data0.chart-pie { -fx-pie-color: #342975;}
+.data1.chart-pie { -fx-pie-color: #981DD8;}
+.data2.chart-pie { -fx-pie-color: #189DEF;}
+/*PIE CHART - END*/

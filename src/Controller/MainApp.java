@@ -4,6 +4,7 @@ import Model.Note;
 import Model.TempNote;
 import View.AddNewLayoutController;
 import View.HomepageController;
+import View.StatisticsLayoutController;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import javafx.application.Application;
@@ -98,6 +99,34 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    public void showstatisticsLayout(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/View/statisticsLayout.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Statistics");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            dialogStage.initStyle(StageStyle.UNDECORATED);
+            Scene scene = new Scene(page);
+            scene.getStylesheets().add("/View/style.css");
+            dialogStage.setScene(scene);
+
+            StatisticsLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
+            controller.start(dialogStage);
+            
+            
+            dialogStage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 

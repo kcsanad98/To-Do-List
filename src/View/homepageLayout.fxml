@@ -76,6 +76,11 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
+            <Button fx:id="menuButtonStatistics" alignment="BASELINE_LEFT" layoutY="191.0" mnemonicParsing="false" onAction="#handleShowStatistics" prefHeight="48.0" prefWidth="166.0" text="Statistics" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <TableView fx:id="noteTable" layoutX="179.0" layoutY="81.0" prefHeight="447.0" prefWidth="316.0">

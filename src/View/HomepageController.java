@@ -47,6 +47,8 @@ public class HomepageController implements Initializable {
     private MainApp mainApp;
 
     private int whichTable;
+    @FXML
+    private Button menuButtonStatistics;
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -202,5 +204,8 @@ public class HomepageController implements Initializable {
         System.exit(0);
     }
     
-    
+    @FXML
+    private void handleShowStatistics(){
+        mainApp.showstatisticsLayout();
+    }
 }
