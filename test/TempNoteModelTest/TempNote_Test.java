@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TempNoteModelTest;
 
 import Model.Note;
@@ -10,13 +5,8 @@ import Model.TempNote;
 import java.time.LocalDate;
 import junit.framework.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author strix
- */
 public class TempNote_Test {
     Note note = new Note();
     
@@ -28,7 +18,7 @@ public class TempNote_Test {
         note.setTitle("New note");
         note.setContent("New");
         note.setDate(LocalDate.MAX);
-        note.setColor(2);
+        note.setColor("0xb3b31aff");
         
         tmpNote = new TempNote(note);
     }
@@ -63,8 +53,8 @@ public class TempNote_Test {
     @Test
     public void testColor()
     {
-        int exp = note.getColor();
-        int act = tmpNote.getColor();
+        String exp = note.getColor();
+        String act = tmpNote.getColor();
         
         Assert.assertEquals(exp, act);
     }

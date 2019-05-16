@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package NoteModelTest;
 
 import Model.Note;
@@ -10,13 +5,8 @@ import java.time.LocalDate;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author strix
- */
 public class note_Test {
     private Note note = new Note();
     
@@ -26,7 +16,7 @@ public class note_Test {
      
       note.setTitle("New Note");
       note.setContent("New Content");
-      note.setColor(1);
+      note.setColor("0xb3b31aff");
       note.setDate(LocalDate.now());
     }
     
@@ -57,10 +47,10 @@ public class note_Test {
     @Test
     public void testNoteColor()
     {
-         int excpected_Color = 1;
-        int actual_Color = note.getColor();
+        String excpected_Color = "0xb3b31aff";
+        String actual_Color = note.getColor();
         
-        if(excpected_Color!=actual_Color)
+        if(!excpected_Color.equals(actual_Color))
             fail();
     }
 }
