@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
 public class HomepageController implements Initializable {
@@ -63,7 +64,8 @@ public class HomepageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-
+        
+        
         /*Clearing person details*/
         showNoteDetails(null);
 
@@ -82,11 +84,13 @@ public class HomepageController implements Initializable {
     public void showNoteDetails(Note note) {
         if (note == null) {
             titleLabel.setText("Please Select a Note");
+            titleLabel.setStyle("-fx-text-fill: WHITE");
             dateLabel.setText("");
             contentLabel.setText("");
             detailsLabel.setText("");
         } else {
             titleLabel.setText(note.getTitle());
+            titleLabel.setStyle("-fx-text-fill:" + "#" + Integer.toHexString(Color.web(note.getColor()).hashCode()));
             dateLabel.setText("Until: " + DateUtil.format(note.getDate()));
             contentLabel.setText(note.getContent());
             contentLabel.setTextAlignment(TextAlignment.JUSTIFY);

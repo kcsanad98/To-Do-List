@@ -22,7 +22,7 @@ public class Note {
     private  StringProperty title = new SimpleStringProperty();
     private  StringProperty content = new SimpleStringProperty();
     private  ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
-    private  IntegerProperty color = new SimpleIntegerProperty();
+    private  StringProperty color = new SimpleStringProperty();
     
     public Note(){
         this("");
@@ -32,14 +32,14 @@ public class Note {
         this.title = new SimpleStringProperty(tempNote.getTitle());
         this.content = new SimpleStringProperty(tempNote.getContent());
         this.date = new SimpleObjectProperty<>(tempNote.getDate());
-        this.color = new SimpleIntegerProperty(tempNote.getColor());
+        this.color = new SimpleStringProperty(tempNote.getColor());
     }
    
     public Note(String title){
         this.title = new SimpleStringProperty(title);
         this.content = new SimpleStringProperty();
         this.date = new SimpleObjectProperty<>();
-        this.color = new SimpleIntegerProperty();
+        this.color = new SimpleStringProperty();
     }
     
     public String getTitle() {
@@ -79,15 +79,15 @@ public class Note {
         return date;
     }
 
-    public int getColor() {
+    public String getColor() {
         return color.get();
     }
 
-    public void setColor(int value) {
+    public void setColor(String value) {
         color.set(value);
     }
 
-    public IntegerProperty colorProperty() {
+    public StringProperty colorProperty() {
         return color;
     }
 

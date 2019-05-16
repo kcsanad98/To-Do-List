@@ -7,7 +7,7 @@ public class TempNote implements java.io.Serializable{
     private String title;
     private String content;
     private LocalDate date;
-    private int color;
+    private String color;
 
     public TempNote(Note note) {
         this.title = note.getTitle();
@@ -40,11 +40,11 @@ public class TempNote implements java.io.Serializable{
         this.date = date;
     }
 
-    public int getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
 }

@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -62,7 +63,11 @@ public class AddNewLayoutController implements Initializable {
         titleField.setText(note.getTitle());
         dateField.setText(DateUtil.format(note.getDate()));
         contentField.setText(note.getContent());
-        //colorpicker
+        if (note.getColor() == null)
+            colorPicker.setValue(Color.WHITE);
+        else
+            colorPicker.setValue(Color.valueOf(note.getColor()));
+        //colorPicker.setValue(Color.BLACK);
     }
     
     public boolean isokClicked(){
@@ -80,7 +85,7 @@ public class AddNewLayoutController implements Initializable {
             note.setTitle(titleField.getText());
             note.setDate(DateUtil.parse(dateField.getText()));
             note.setContent(contentField.getText());
-            //color picker
+            note.setColor(colorPicker.getValue().toString());
             
             okClicked = true;
             dialogStage.close();
